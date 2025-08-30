@@ -7,8 +7,10 @@
     <link rel="stylesheet" href="./styles/color.css" />
     <link rel="stylesheet" href="./styles/main.css" />
     <link rel="stylesheet" href="./styles/logIn.css" />
+    <script src="https://www.gstatic.com/firebasejs/12.2.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore-compat.js"></script>
 
-    <script type="module" src="./db/scrMainDB.js" defer></script>
+    <script src="./db/scrMainDB.js" defer></script>
     <script src="./scripts/scrLogIn.js" defer></script>
     <title>Join Login</title>
   </head>
@@ -27,7 +29,7 @@
       </header>
       <main>
         <div class="conta-form">
-          <form onsubmit="handleLogin(event);">
+          <form onsubmit="handleLogin();">
             <header>
               <div class="head-form">
                 <h1>Log in</h1>
@@ -55,15 +57,25 @@
                 </div>
               </div>
               <div id="checkboxContainer">
-                <input type="checkbox" title="to save"/>
+                <input type="checkbox" title="to save" />
                 <span>Remember me</span>
               </div>
             </main>
             <footer>
               <div class="buttonDiv">
                 <div>
-                  <button onclick="handleLogIn()" type="button" class="primary-button">Log in</button>
-                  <button onclick="guestLogin()" type="button" class="clear-button">
+                  <button
+                    onclick="handleLogIn()"
+                    type="button"
+                    class="primary-button"
+                  >
+                    Log in
+                  </button>
+                  <button
+                    onclick="guestLogin()"
+                    type="button"
+                    class="clear-button"
+                  >
                     Guest Log in
                   </button>
                 </div>

@@ -34,10 +34,13 @@ function getLoadingscreenDesktop() {
  *
  * @param {Event} event - The form submit event.
  */
-function handleLogIn(event) {
+function handleLogIn() {
   // event.preventDefault();
   // toggleLoadingSpinner('add');
   // toggleSignInError('_', 'remove');
+
+  // usder2@email.com
+  // Test123@
 
   const inputEmail = document.getElementById("mail").value;
   const inputPassword = document.getElementById("password").value;
@@ -53,24 +56,25 @@ function handleLogIn(event) {
  * @param {string} inputPassword - The entered password.
  */
 async function checkCredentials(inputEmail, inputPassword) {
-  const allUsers = Object.values(await loadUsersFromDB("users"));
-  const user = allUsers.find((user) => user.email === inputEmail);
-  if (!user) {
-    console.log("No user with that email");
-
-    return;
-  }
-
-  if (user.password !== inputPassword) {
+  const objUser = await findUser(inputEmail);
+  if (objUser) {
+    checkPassword(objUser, inputPassword);
+  } else {
     console.log("Email or password is invalid");
+  }
+}
 
+async function findUser(inputEmail) {
+  const allUsers = Object.values(await loadUsersFromDB("users"));
+  return allUsers.find((user) => user.email === inputEmail);
+}
+
+function checkPassword(objUser, inputPassword) {
+  if (objUser.password === inputPassword) {
+    currentUser = objUser;
+    console.log(currentUser);
     return;
   }
+  console.log("Email or password is invalid");
 
-  console.log("Redirecting to: pages/summary.html");
-  // console.log('Current page is:', window.location.href);
-
-  // window.location.href = '../pages/summary.html';
-  // window.location.href = "pages/summary.html";
-  // toggleLoadingSpinner('remove');
 }

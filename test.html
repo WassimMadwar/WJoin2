@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="module">
+  // Import Firebase SDKs من CDN
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCJQawOw8vCpNuWtBvLsoRVo8P2Brspj9A",
+  authDomain: "wjoin-b0ca8.firebaseapp.com",
+  projectId: "wjoin-b0ca8",
+  storageBucket: "wjoin-b0ca8.firebasestorage.app",
+  messagingSenderId: "376793771989",
+  appId: "1:376793771989:web:cbba9fe9a828a5642dd75c"
+};
+
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  async function fetchUsers() {
+    const usersCol = collection(db, "users");
+    const snapshot = await getDocs(usersCol);
+    const list = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    console.log(list);
+  }
+
+  fetchUsers();
+</script>
+</head>
+<body>
+    
+</body>
+</html>

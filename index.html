@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./assets/img/logo-white.png" />
+    <link rel="stylesheet" href="./styles/color.css" />
+    <link rel="stylesheet" href="./styles/main.css" />
+    <link rel="stylesheet" href="./styles/logIn.css" />
+
+    <script type="module" src="./db/scrDB.js" defer></script>
+    <script src="./scripts/scrLogIn.js" defer></script>
+    <title>Join Login</title>
+  </head>
+
+  <body onload="Loadingscreen()">
+    <div id="content" class="d-f-column">
+      <header>
+        <div class="h-signup">
+          <div class="signup">
+            <span>Not a Join user ?</span>
+            <a href="./pages/sign_up.html">
+              <button class="primary-button">Sign up</button>
+            </a>
+          </div>
+        </div>
+      </header>
+      <main>
+        <div class="conta-form">
+          <form onsubmit="handleLogin(event);">
+            <header>
+              <div class="head-form">
+                <h1>Log in</h1>
+                <div class="separator"></div>
+              </div>
+            </header>
+            <main>
+              <div class="conta-input">
+                <div class="sign-input">
+                  <input id="mail" type="email" placeholder="E-Mail" required />
+                  <img
+                    src="./assets/img/mail.svg"
+                    alt="E-Mail"
+                    class="overlay-image"
+                  />
+                </div>
+                <div class="sign-input">
+                  <input
+                    id="password"
+                    type="password"
+                    placeholder="Password"
+                    required
+                  />
+                  <img src="./assets/img/lock.svg" alt="password" />
+                </div>
+              </div>
+              <div id="checkboxContainer">
+                <input type="checkbox" />
+                <span>Remember me</span>
+              </div>
+            </main>
+            <footer>
+              <div class="buttonDiv">
+                <div>
+                  <button class="primary-button">Log in</button>
+                  <button onclick="guestLogin()" class="clear-button">
+                    Guest Log in
+                  </button>
+                </div>
+              </div>
+            </footer>
+          </form>
+        </div>
+      </main>
+
+      <footer>
+        <div class="">
+          <a><span>Privacy Policy</span></a>
+          <a><span>Legal notice</span></a>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Ladeanimation -->
+    <div id="loader" class="loader"></div>
+  </body>
+</html>

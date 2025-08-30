@@ -1,4 +1,3 @@
-// const dbUrl = 'https://join-mb-default-rtdb.europe-west1.firebasedatabase.app/';
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
 import {
@@ -34,9 +33,9 @@ const db = getFirestore(app);
 // let draggableArea = null;
 const userList = [];
 
-async function fetchUsers() {
-  const usersCol = collection(db, "users"); // نحدد الكولكشن
-  const userSnapshot = await getDocs(usersCol); // نجيب كل الدوكيومنتات
+async function loadUsersFromDB() {
+  const usersCol = collection(db, "users"); 
+  const userSnapshot = await getDocs(usersCol); 
 
   for (const doc of userSnapshot.docs) {
     userList.push({
@@ -47,6 +46,6 @@ async function fetchUsers() {
   return userList;
 }
 
-fetchUsers().then((users) => {
+loadUsersFromDB().then((users) => {
   console.log("Users:", users);
 });

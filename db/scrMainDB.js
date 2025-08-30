@@ -1,15 +1,4 @@
 // const dbUrl = 'https://join-mb-default-rtdb.europe-west1.firebasedatabase.app/';
-let allUserCredential = [];
-let currentUser = "";
-
-let contacts = [];
-let tasks = [];
-let allSubTasks = [];
-let category = ["User Story", "Technical Task"];
-let assignedTemplate = null;
-let currentContact = null;
-let dragElement = null;
-let draggableArea = null;
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
 import {
@@ -31,16 +20,33 @@ const firebaseConfig = {
 // تهيئة Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-// Hosting URL: https://wjoin-b0ca8.web.app
+
+// let allUserCredential = [];
+// let currentUser = "";
+
+// let contacts = [];
+// let tasks = [];
+// let allSubTasks = [];
+// let category = ["User Story", "Technical Task"];
+// let assignedTemplate = null;
+// let currentContact = null;
+// let dragElement = null;
+// let draggableArea = null;
+const userList = [];
+
 async function fetchUsers() {
   const usersCol = collection(db, "users"); // نحدد الكولكشن
   const userSnapshot = await getDocs(usersCol); // نجيب كل الدوكيومنتات
-  const userList = userSnapshot.docs.map((doc) => ({
-    id: doc.id, // ID تبع الدوكيومنت
-    ...doc.data(), // البيانات نفسها
-  }));
+
+  for (const doc of userSnapshot.docs) {
+    userList.push({
+      id: doc.id,
+      ...doc.data(),
+    });
+  }
   return userList;
 }
+
 fetchUsers().then((users) => {
   console.log("Users:", users);
 });

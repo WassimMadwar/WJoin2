@@ -39,6 +39,12 @@ a {
   margin-bottom: 14px;
   width: 200px;
 }
+#error-message {
+  margin-top: 10px;
+  color: var(--color-red);
+  font-size: 14px;
+  font-weight: bold;
+}
 
 .conta-form {
   position: absolute;

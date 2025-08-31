@@ -12,6 +12,7 @@
 
     <script src="./db/scrMainDB.js" defer></script>
     <script src="./scripts/scrLogIn.js" defer></script>
+    <script src="./scripts/scrUtils.js" defer></script>
     <title>Join Login</title>
   </head>
 
@@ -29,17 +30,24 @@
       </header>
       <main>
         <div class="conta-form">
-          <form onsubmit="handleLogin();">
+          <form onsubmit="handleLogIn(event);">
             <header>
               <div class="head-form">
                 <h1>Log in</h1>
                 <div class="separator"></div>
               </div>
+              <div id="errMsg"></div>
             </header>
             <main>
               <div class="conta-input">
                 <div class="sign-input">
-                  <input id="mail" type="email" placeholder="E-Mail" required />
+                  <input
+                    id="mail"
+                    type="email"
+                    placeholder="E-Mail"
+                    required
+                    oninput="clearError()"
+                  />
                   <img
                     src="./assets/img/mail.svg"
                     alt="E-Mail"
@@ -52,6 +60,8 @@
                     type="password"
                     placeholder="Password"
                     required
+                    oninput="clearError()"
+
                   />
                   <img src="./assets/img/lock.svg" alt="password" />
                 </div>
@@ -65,8 +75,7 @@
               <div class="buttonDiv">
                 <div>
                   <button
-                    onclick="handleLogIn()"
-                    type="button"
+                    type="submit"
                     class="primary-button"
                   >
                     Log in

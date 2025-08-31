@@ -13,7 +13,7 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
 const userList = [];
-let currentUser = "";
+let currentObjUser = "";
 
 async function loadUsersFromDB() {
   const snapshot = await db.collection("users").get();
